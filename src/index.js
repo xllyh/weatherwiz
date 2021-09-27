@@ -41,9 +41,43 @@ function reflectTemp(event) {
   axios.get(apiUrl).then(getTemp);
 }
 
+function reflectWeatherDesciption(event) {
+  let chosenCity = document.querySelector("#city");
+  let apiKey = "d3cc01913a58e21e1660291b8458a847";
+
+  function getWeatherDesc(response) {
+    let currentWeatherDescription = document.querySelector(".currentDesc");
+    currentWeatherDescription.innerHTML = response.data.weather[0].description;
+  }
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(getWeatherDesc);
+}
+
+function reflectIcon(event) {
+  let chosenCity = document.querySelector("#city");
+  let apiKey = "d3cc01913a58e21e1660291b8458a847";
+
+  function getIcon(response) {
+    let currentIcon = document.querySelector(".currentWeatherImage");
+    currentIcon.setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+    console.log(
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  }
+
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(getIcon);
+}
+
 let cityInput = document.querySelector("#city-form");
 cityInput.addEventListener("submit", reflectName);
 cityInput.addEventListener("submit", reflectTemp);
+cityInput.addEventListener("submit", reflectWeatherDesciption);
+cityInput.addEventListener("submit", reflectIcon);
 
 //Display Current Location City name and Temp
 

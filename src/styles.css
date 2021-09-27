@@ -29,6 +29,7 @@ h1 {
   display: inline-block;
   text-align: center;
   padding-top: 10px;
+  text-transform: capitalize;
 }
 .currentWeather {
   margin: 20px;
