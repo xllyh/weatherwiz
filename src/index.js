@@ -19,6 +19,27 @@ let dayOfWeek = weekDays[weekDay];
 let currentTime = document.querySelector("h5");
 currentTime.innerHTML = `${dayOfWeek} - ${hour}:${minute}`;
 
+//Get Default Weather Data
+
+function getDefaultWeather(response) {
+  let currentWeather = document.querySelector(".currentTemp");
+  currentWeather.innerHTML = `${Math.round(response.data.main.temp)}°c`;
+
+  let currentWeatherImageElement = document.querySelector(
+    ".currentWeatherImage"
+  );
+  currentWeatherImageElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  let currentDescElement = document.querySelector(".currentDesc");
+  currentDescElement.innerHTML = response.data.weather[0].description;
+}
+
+let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Hong Kong&units=metric&appid=d3cc01913a58e21e1660291b8458a847`;
+axios.get(currentWeatherUrl).then(getDefaultWeather);
+
 //Display searched city name
 
 function reflectName(event) {
