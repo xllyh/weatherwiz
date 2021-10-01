@@ -23,7 +23,7 @@ currentTime.innerHTML = `${dayOfWeek} - ${hour}:${minute}`;
 
 function getDefaultWeather(response) {
   let currentWeather = document.querySelector(".currentTemp");
-  currentWeather.innerHTML = `${Math.round(response.data.main.temp)}°c`;
+  currentWeather.innerHTML = `${Math.round(response.data.main.temp)}`;
 
   let currentWeatherImageElement = document.querySelector(
     ".currentWeatherImage"
@@ -35,6 +35,19 @@ function getDefaultWeather(response) {
 
   let currentDescElement = document.querySelector(".currentDesc");
   currentDescElement.innerHTML = response.data.weather[0].description;
+
+  let currentFeelsElement = document.querySelector(".currentFeels");
+  currentFeelsElement.innerHTML = `${Math.round(
+    response.data.main.feels_like
+  )}`;
+
+  let currentHumidityElement = document.querySelector(".currentHumidity");
+  currentHumidityElement.innerHTML = `${Math.round(
+    response.data.main.humidity
+  )}`;
+
+  let currentWindElement = document.querySelector(".currentWind");
+  currentWindElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
 }
 
 let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Hong Kong&units=metric&appid=d3cc01913a58e21e1660291b8458a847`;

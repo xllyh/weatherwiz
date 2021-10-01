@@ -7,6 +7,9 @@ h1 {
   margin-top: 20px;
 }
 
+li {
+  font-size: 14px;
+}
 .mainCard {
   display: block;
   margin: 15%;
@@ -33,6 +36,13 @@ h1 {
 }
 .currentWeather {
   margin: 20px;
+}
+
+.currentTempDegree {
+  font-size: 25px;
+  font-weight: bold;
+  position: relative;
+  top: -28px;
 }
 
 .currentTemp {
@@ -68,4 +78,8 @@ h1 {
 
 .forecastTemp {
   font-size: 10px;
+}
+
+.OtherWeather {
+  list-style: none;
 }
