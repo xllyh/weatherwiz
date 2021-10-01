@@ -79,12 +79,12 @@ function reflectTemp(event) {
     celsiusTemperature = response.data.main.temp;
     celsiusFeelsTemp = response.data.main.feels_like;
 
-    currentTemp.innerHTML = `${Math.round(celsiusTemperature)}°c`;
+    currentTemp.innerHTML = `${Math.round(celsiusTemperature)}`;
     currentDescElement.innerHTML = response.data.weather[0].description;
 
     currentFeelsElement.innerHTML = `${Math.round(
       response.data.main.feels_like
-    )}`;
+    )}°c`;
 
     currentHumidityElement.innerHTML = `${Math.round(
       response.data.main.humidity
