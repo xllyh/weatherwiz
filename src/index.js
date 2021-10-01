@@ -153,7 +153,7 @@ function getTemp(response) {
 
   currentFeelsElement.innerHTML = `${Math.round(
     response.data.main.feels_like
-  )}`;
+  )}°c`;
 
   currentHumidityElement.innerHTML = `${Math.round(
     response.data.main.humidity
