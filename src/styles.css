@@ -88,3 +88,19 @@ li {
 .currentTempBlock {
   margin-bottom: 0px;
 }
+
+#fahrenheit-link {
+  text-decoration: none;
+}
+
+#celsius-link {
+  text-decoration: none;
+}
+
+.active {
+  color: black;
+}
+
+.active:hover {
+  color: black;
+}
