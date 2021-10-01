@@ -39,16 +39,16 @@ li {
 }
 
 .currentTempDegree {
-  font-size: 25px;
-  font-weight: bold;
+  font-size: 20px;
   position: relative;
-  top: -28px;
+  top: -30px;
 }
 
 .currentTemp {
   font-size: 65px;
   font-weight: bolder;
   display: inline;
+  text-align: left;
 }
 .currentOther {
   display: inline;

@@ -181,3 +181,18 @@ function getPosition(event) {
 
 let currentLocation = document.querySelector("#my-location");
 currentLocation.addEventListener("click", getPosition);
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector(".currentTemp");
+  let currentFeelsElement = document.querySelector(".currentFeels");
+  let fahrenheitTemp = Math.round(temperatureElement.innerHTML * (9 / 5) + 32);
+  let fahrenheitFeelsTemp = Math.round(
+    currentFeelsElement.innerHTML * (9 / 5) + 32
+  );
+  temperatureElement.innerHTML = fahrenheitTemp;
+  currentFeelsElement.innerHTML = fahrenheitFeelsTemp;
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemp);
