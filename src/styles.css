@@ -12,13 +12,15 @@ li {
 }
 .mainCard {
   display: block;
-  margin: 15%;
+  margin: 0 auto;
+  float: none;
   background-color: rgb(255, 255, 255, 0.7);
   padding: 5%;
   border-radius: 15px;
   max-width: 508px;
-  max-height: 4\690px;
+  max-height: 690px;
   margin-bottom: 5px;
+  margin-top: 15%;
 }
 
 .searchBar {
