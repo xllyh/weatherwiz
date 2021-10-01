@@ -68,7 +68,23 @@ function reflectTemp(event) {
 
   function getTemp(response) {
     let currentTemp = document.querySelector(".currentTemp");
-    currentTemp.innerHTML = `${Math.round(response.data.main.temp)}°c`;
+    currentTemp.innerHTML = `${Math.round(response.data.main.temp)}`;
+
+    let currentDescElement = document.querySelector(".currentDesc");
+    currentDescElement.innerHTML = response.data.weather[0].description;
+
+    let currentFeelsElement = document.querySelector(".currentFeels");
+    currentFeelsElement.innerHTML = `${Math.round(
+      response.data.main.feels_like
+    )}`;
+
+    let currentHumidityElement = document.querySelector(".currentHumidity");
+    currentHumidityElement.innerHTML = `${Math.round(
+      response.data.main.humidity
+    )}`;
+
+    let currentWindElement = document.querySelector(".currentWind");
+    currentWindElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
   }
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&units=metric&appid=${apiKey}`;
@@ -98,9 +114,6 @@ function reflectIcon(event) {
       "src",
       `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
-    console.log(
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
   }
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&units=metric&appid=${apiKey}`;
@@ -120,7 +133,29 @@ let apiKey = "d3cc01913a58e21e1660291b8458a847";
 function getTemp(response) {
   let temp = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".currentTemp");
-  currentTemp.innerHTML = `${temp}°c`;
+  currentTemp.innerHTML = `${temp}`;
+
+  let currentDescElement = document.querySelector(".currentDesc");
+  currentDescElement.innerHTML = response.data.weather[0].description;
+
+  let currentFeelsElement = document.querySelector(".currentFeels");
+  currentFeelsElement.innerHTML = `${Math.round(
+    response.data.main.feels_like
+  )}`;
+
+  let currentHumidityElement = document.querySelector(".currentHumidity");
+  currentHumidityElement.innerHTML = `${Math.round(
+    response.data.main.humidity
+  )}`;
+
+  let currentWindElement = document.querySelector(".currentWind");
+  currentWindElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
+
+  let currentIcon = document.querySelector(".currentWeatherImage");
+  currentIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function getCity(response) {

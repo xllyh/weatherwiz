@@ -82,4 +82,9 @@ li {
 
 .OtherWeather {
   list-style: none;
+  text-align: left;
+}
+
+.currentTempBlock {
+  margin-bottom: 0px;
 }
