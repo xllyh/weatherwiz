@@ -42,7 +42,7 @@ function getDefaultWeather(response) {
   let currentFeelsElement = document.querySelector(".currentFeels");
   currentFeelsElement.innerHTML = `${Math.round(
     response.data.main.feels_like
-  )}`;
+  )}°c`;
 
   let currentHumidityElement = document.querySelector(".currentHumidity");
   currentHumidityElement.innerHTML = `${Math.round(
@@ -79,7 +79,7 @@ function reflectTemp(event) {
     celsiusTemperature = response.data.main.temp;
     celsiusFeelsTemp = response.data.main.feels_like;
 
-    currentTemp.innerHTML = `${Math.round(celsiusTemperature)}`;
+    currentTemp.innerHTML = `${Math.round(celsiusTemperature)}°c`;
     currentDescElement.innerHTML = response.data.weather[0].description;
 
     currentFeelsElement.innerHTML = `${Math.round(
@@ -198,19 +198,24 @@ function showFahrenheitTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".currentTemp");
   let currentFeelsElement = document.querySelector(".currentFeels");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
   let fahrenheitTemp = Math.round(celsiusTemperature * (9 / 5) + 32);
   let fahrenheitFeelsTemp = Math.round(celsiusFeelsTemp * (9 / 5) + 32);
   temperatureElement.innerHTML = fahrenheitTemp;
-  currentFeelsElement.innerHTML = fahrenheitFeelsTemp;
+  currentFeelsElement.innerHTML = `${fahrenheitFeelsTemp}°f`;
 }
 
 function showCelsiusTemp(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".currentTemp");
   let currentFeelsElement = document.querySelector(".currentFeels");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let celsiusFeelsTempElement = Math.round(celsiusFeelsTemp);
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  currentFeelsElement.innerHTML = Math.round(celsiusFeelsTemp);
+  currentFeelsElement.innerHTML = `${celsiusFeelsTempElement}°c`;
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
