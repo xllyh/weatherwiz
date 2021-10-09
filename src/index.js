@@ -56,6 +56,31 @@ function getDefaultWeather(response) {
 let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Hong Kong&units=metric&appid=d3cc01913a58e21e1660291b8458a847`;
 axios.get(currentWeatherUrl).then(getDefaultWeather);
 
+//Forecast Weather Loop
+function displayForecast() {
+  let forecastElement = document.querySelector(".forecast");
+
+  let days = ["Sun", "Mon", "Tue"];
+  let forecastHTML = `<div class="row">`;
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+              <div class="col-2">
+                <span class="forecastDay">${day}</span>
+          <img class="forecastImage" src="https://openclipart.org/image/800px/194077" alt="Monday Weather">
+        <span class="forecastTemp"> <span id="forecast-min">12°</span>  |  <span id="forecast-max">18°</span></span>
+        </div>
+`;
+  });
+
+  forecast = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+displayForecast();
+
 //Display searched city name
 
 function reflectName(event) {
