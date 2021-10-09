@@ -51,16 +51,20 @@ function getDefaultWeather(response) {
 
   let currentWindElement = document.querySelector(".currentWind");
   currentWindElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
+
+  getForecast(response.data.coord);
 }
 
 let currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=Hong Kong&units=metric&appid=d3cc01913a58e21e1660291b8458a847`;
 axios.get(currentWeatherUrl).then(getDefaultWeather);
 
 //Forecast Weather Loop
-function displayForecast() {
+
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector(".forecast");
 
-  let days = ["Sun", "Mon", "Tue"];
+  let days = ["Sun", "Mon", "Tue", "Wed"];
   let forecastHTML = `<div class="row">`;
 
   days.forEach(function (day) {
@@ -79,7 +83,12 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
-displayForecast();
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "d3cc01913a58e21e1660291b8458a847";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 //Display searched city name
 
@@ -116,6 +125,8 @@ function reflectTemp(event) {
     )}`;
 
     currentWindElement.innerHTML = `${Math.round(response.data.wind.speed)}`;
+
+    getForecast(response.data.coord);
   }
 
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity.value}&units=metric&appid=${apiKey}`;
@@ -190,6 +201,8 @@ function getTemp(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function getCity(response) {
