@@ -60,23 +60,38 @@ axios.get(currentWeatherUrl).then(getDefaultWeather);
 
 //Forecast Weather Loop
 
+function formatDay(timestamp) {
+  let forecastDate = new Date(timestamp * 1000);
+  let forecastDay = forecastDate.getDay();
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+
+  return days[forecastDay];
+}
+
 function displayForecast(response) {
-  console.log(response.data);
   let forecastElement = document.querySelector(".forecast");
 
-  let days = ["Sun", "Mon", "Tue", "Wed"];
+  let forecastDaily = response.data.daily;
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecastDaily.forEach(function (day, index) {
+    if (index > 0 && index < 7) {
+      forecastHTML =
+        forecastHTML +
+        `
               <div class="col-2">
-                <span class="forecastDay">${day}</span>
-          <img class="forecastImage" src="https://openclipart.org/image/800px/194077" alt="Monday Weather">
-        <span class="forecastTemp"> <span id="forecast-min">12°</span>  |  <span id="forecast-max">18°</span></span>
+                <span class="forecastDay">${formatDay(day.dt)}</span>
+          <img class="forecastImage" src= "http://openweathermap.org/img/wn/${
+            day.weather[0].icon
+          }@2x.png">
+        <span class="forecastTemp"> <span id="forecast-min">${Math.round(
+          day.temp.min
+        )}°</span>  |  <span id="forecast-max">${Math.round(
+          day.temp.max
+        )}°</span></span>
         </div>
 `;
+    }
   });
 
   forecast = forecastHTML + `</div>`;
