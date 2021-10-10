@@ -243,36 +243,3 @@ function getPosition(event) {
 
 let currentLocation = document.querySelector("#my-location");
 currentLocation.addEventListener("click", getPosition);
-
-let celsiusTemperature = null;
-let celsiusFeelsTemp = null;
-
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector(".currentTemp");
-  let currentFeelsElement = document.querySelector(".currentFeels");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = Math.round(celsiusTemperature * (9 / 5) + 32);
-  let fahrenheitFeelsTemp = Math.round(celsiusFeelsTemp * (9 / 5) + 32);
-  temperatureElement.innerHTML = fahrenheitTemp;
-  currentFeelsElement.innerHTML = `${fahrenheitFeelsTemp}°f`;
-}
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector(".currentTemp");
-  let currentFeelsElement = document.querySelector(".currentFeels");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let celsiusFeelsTempElement = Math.round(celsiusFeelsTemp);
-
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  currentFeelsElement.innerHTML = `${celsiusFeelsTempElement}°c`;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", showFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", showCelsiusTemp);
